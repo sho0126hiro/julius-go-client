@@ -3,7 +3,7 @@ tcp client of Julius (module-mode) for Go
 
 This package contains a set of utilities for connecting and handling [Julius](https://julius.osdn.jp/), an open source real-time large vocabulary recognition engine.
 
-**Note**: In order to use this library, julius must be installed correctly and julius must be running in module-mode.
+**Note**: In order to use this library, julius must be installed correctly, and it runs in module-mode.
 
 ## Requirement
 

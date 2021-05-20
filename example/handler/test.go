@@ -3,14 +3,18 @@ package handler
 import (
 	"context"
 	"fmt"
-	"sho0126hiro/julius-go-client/client"
+	"github.com/sho0126hiro/julius-go-client/client"
 )
 
 func init() {
-	client.RegisterHandler(testMessage, test)
+	client.RegisterHandler(filter, test)
 }
 
 const testMessage = "Some Message (language: ja only(maybe))"
+
+func filter(_ context.Context, result *client.Result) bool {
+	return result.Details[0].Word == testMessage
+}
 
 func test(_ context.Context, result *client.Result) error {
 	fmt.Println("Some Message")

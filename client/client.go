@@ -12,9 +12,9 @@ import (
 
 // Client julius client structure
 type Client struct {
-	conn net.Conn
+	conn      net.Conn
 	connClose func()
-	channel chan string
+	channel   chan string
 }
 
 // NewClient create new Client
@@ -57,8 +57,7 @@ func (c *Client) handle(ctx context.Context) {
 			log.Println(err)
 		}
 		for _, handler := range RegisteredHandlers {
-			fmt.Println(result.Details[0].Word, handler.CallMessage)
-			if result.Details[0].Word == handler.CallMessage {
+			if handler.Filter(ctx, result) {
 				if err := handler.Do(ctx, result); err != nil {
 					log.Println(err)
 				}
